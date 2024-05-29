@@ -12,7 +12,7 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
 
     useEffect(() => {
         if (edit && isModalOpen) {
-            axios.get(`http://localhost:9000/project/${id}`)
+            axios.get(`https://projecttracker-1.onrender.com/project/${id}`)
                 .then((res) => {
                     setTitle(res.data[0].title)
                     setDesc(res.data[0].description)
@@ -28,7 +28,7 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
         e.preventDefault()
         if (!edit) {
             console.log("working frontend 1")
-            axios.post('http://localhost:9000/project/', { title, description: desc })
+            axios.post('https://projecttracker-1.onrender.com/project/', { title, description: desc })
                 .then((res) => {
                     console.log("res : ", res);
                     closeModal()
@@ -46,7 +46,7 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
                     }
                 })
         } else {
-            axios.put(`http://localhost:9000/project/${id}`, { title, description: desc })
+            axios.put(`https://projecttracker-1.onrender.com/project/${id}`, { title, description: desc })
                 .then((res) => {
                     closeModal()
                     const customEvent = new CustomEvent('projectUpdate', { detail: { ...res.data } });

@@ -8,7 +8,7 @@ const ProjectDropdown = ({ id, navigate }) => {
     const [isModalOpen, setModalState] = useState(false)
     const handleDelete = async () => {
         try {
-            const data = await axios.delete(`http://localhost:9000/project/${id}`)
+            const data = await axios.delete(`https://projecttracker-1.onrender.com/project/${id}`)
             if (data.data.deletedCount > 0) {
                 toast.success('Record deleted successfully')
                 navigate('/')
