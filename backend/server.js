@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGODB_PATH, {
 //  .catch(err => console.log(err));
 
 const PORT = process.env.SERVER_PORT || 9000
-const origin = process.env.CORS_ORIGIN || ['http://localhost:3000', 'https://projectrack.netlify.app/']
+const origin = process.env.CORS_ORIGIN || ['http://localhost:3000', 'https://projectrack.netlify.app/' , 'https://projectrack.netlify.app/']
 
 const app = express()
 
