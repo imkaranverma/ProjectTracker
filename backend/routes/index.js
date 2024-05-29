@@ -15,7 +15,7 @@ api.get('/projects', async (req, res) => {
 })
 
 api.get('/project/:id', async (req, res) => {
-    if (!req.params.id) res.status(422).send({ data: { error: true, message: 'Id is reaquire' } })
+    if (!req.params.id) res.status(422).send({ data: { error: true, message: 'Id is require' } })
     try {
         const data = await Project.find({ _id: mongoose.Types.ObjectId(req.params.id) }).sort({ order: 1 })
         return res.send(data)
@@ -31,18 +31,22 @@ api.post('/project', async (req, res) => {
         title: joi.string().min(3).max(30).required(),
         description: joi.string().required(),
     })
-
+    
     // validation
     const { error, value } = project.validate({ title: req.body.title, description: req.body.description });
     if (error) return res.status(422).send(error)
-
-
+    
+    
     // insert data 
     try {
-        const data = await new Project(value).save()
-        res.send({ data: { title: data.title, description: data.description, updatedAt: data.updatedAt, _id: data._id } })
+        const project = new Project(value);
+        console.log("project : ", project);
+        const data = await project.save();
+        console.log('Project saved successfully:', data);
 
-    } catch (e) {
+        // Send the response after successfully saving the data
+        res.send({ data: { title: data.title, description: data.description, updatedAt: data.updatedAt, _id: data._id } });
+    }  catch (e) {
         if (e.code === 11000) {
             return res.status(422).send({ data: { error: true, message: 'title must be unique' } })
         } else {

@@ -27,8 +27,10 @@ const AddProjectModal = ({ isModalOpen, closeModal, edit = false, id = null }) =
     const handleSubmit = (e) => {
         e.preventDefault()
         if (!edit) {
+            console.log("working frontend 1")
             axios.post('http://localhost:9000/project/', { title, description: desc })
                 .then((res) => {
+                    console.log("res : ", res);
                     closeModal()
                     const customEvent = new CustomEvent('projectUpdate', { detail: { ...res.data } });
                     document.dispatchEvent(customEvent);

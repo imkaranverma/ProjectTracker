@@ -9,19 +9,20 @@ const project = new mongoose.Schema({
     description: String,
     task: [
         {
-            id: Number,
-            title: String,
-            description: String,
-            order: Number,
-            stage: String,
-            index: Number,
+            id: { type: Number, default: 0 },
+            title: { type: String, default: "" },
+            description: { type: String, default: "" },
+            order: { type: Number, default: 0 },
+            stage: { type: String, default: "" },
+            index: { type: Number, default: 0 },
             attachment: [
-                { type: String, url: String }
+                { type: { type: String, default: "" }, url: { type: String, default: "" } }
             ],
             created_at: { type: Date, default: Date.now },
             updated_at: { type: Date, default: Date.now },
         }
     ]
+   
 }, { timestamps: true })
 
 

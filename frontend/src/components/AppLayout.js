@@ -16,6 +16,9 @@ const AppLayout = ({ children }) => {
                     </div>
                 </div>
             </div>
+            <footer className=' w-[90vw]  m-auto text-center p-6'>
+                <p className='text-base text-lg'>Made with &#x2764;&#xfe0f; by <a className='text-[#6366F1]' href='https://iamkaranverma.netlify.app/'>KARAN VERMA</a></p>
+            </footer>
         </div>
     )
 }
