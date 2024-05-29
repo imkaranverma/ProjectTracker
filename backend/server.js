@@ -40,7 +40,10 @@ const PORT = process.env.SERVER_PORT || 9000
 const app = express()
 
 app.use(cors({
-    origin: ['https://projectrack.netlify.app/']
+    origin: 'https://projectrack.netlify.app/',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204
 }));
 app.use(express.json())
 app.use(express.urlencoded())
